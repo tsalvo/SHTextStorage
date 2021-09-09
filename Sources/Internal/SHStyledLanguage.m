@@ -13,7 +13,6 @@
 #import "SHColorSet.h"
 
 @interface SHStyledLanguage()
-@property (nonatomic, strong) NSArray<SHRule *> *rules;
 @property (nonatomic, strong) NSArray<SHStyledRule *> *styledRules;
 #if TARGET_OS_IOS
 @property (nonatomic, strong) UIColor *defaultColor;
@@ -24,29 +23,28 @@
 
 @implementation SHStyledLanguage
 
-@synthesize rules;
 @synthesize styledRules;
 @synthesize defaultColor;
 
--(instancetype)initWithRules:(NSArray<SHRule *>*)aRules
+-(instancetype)initWithLanguage:(SHLanguage *)aLanguage
                        colorSet:(SHColorSet *)aColorSet
 {
     if (self = [super init])
     {
-        self.rules = aRules;
         NSMutableArray<SHStyledRule *> *tempArray = [[NSMutableArray alloc] init];
-        for (SHRule *rule in aRules)
+        for (SHRule *rule in aLanguage.rules)
         {
 #if TARGET_OS_IOS
             UIColor *color;
 #else
             NSColor *color;
 #endif
-            color = [aColorSet colorForCategory:rule.category];
+            
+            color = [aColorSet colorForCategory: rule.category];
             SHStyledRule *styledRule = [[SHStyledRule alloc] initWithRule:rule color:color];
             [tempArray addObject:styledRule];
         }
-        self.styledRules = [NSArray arrayWithArray:tempArray];
+        self.styledRules = [NSArray arrayWithArray:[tempArray copy]];
         self.defaultColor = [aColorSet colorForCategory:DefaultText];
     }
     

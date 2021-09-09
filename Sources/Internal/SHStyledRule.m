@@ -12,7 +12,7 @@
 @synthesize rule;
 @synthesize color;
 
--(instancetype) initWithRule:(SHRule *)aRule
+-(instancetype)initWithRule:(SHRule *)aRule
 #if TARGET_OS_IOS
                           color:(UIColor *)aColor
 #else

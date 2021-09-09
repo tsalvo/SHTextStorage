@@ -29,6 +29,8 @@
     {
         self.colorMap = aColorMap;
     }
+    
+    return self;
 }
 
 #if TARGET_OS_IOS
@@ -53,6 +55,8 @@
         result = NSColor.labelColor;
 #endif
     }
+    
+    return result;
 }
 
 @end

@@ -28,5 +28,9 @@ let package = Package(
                 .headerSearchPath("Internal"),
             ]
         ),
+        .testTarget(
+            name: "SHTextStorageTests",
+            dependencies: ["SHTextStorage"]
+        )
     ]
 )

@@ -32,7 +32,7 @@
 {
     if (self = [super init])
     {
-        self.language = [[SHStyledLanguage alloc] initWithRules:aLanguage.rules
+        self.language = [[SHStyledLanguage alloc] initWithLanguage:aLanguage
                                                        colorSet:aColorSet];
         self.storage = [[NSTextStorage alloc] init];
         self.font = aFont;

@@ -20,6 +20,8 @@
         self.languageName = aName;
         self.rules = aRules;
     }
+    
+    return self;
 }
 
 @end
