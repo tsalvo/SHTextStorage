@@ -1,6 +1,8 @@
 # SHTextStorage
 A Swift Package containing an NSTextStorage subclass, and supporting classes for defining language regex rules / color matching, written in Objective-C.  This package is intended to provide syntax highlighting for a UITextView. As the user types, the currently edited line will be reprocessed with the rule set.
 
+![Demo](/Screenshots/demo-asm6.gif)
+
 ## Why Objective-C and not Swift?
 Performance is the main reason. `NSTextStorage`, when subclassed in Swift, exposes a Swift-style `String` property, along with methods for reading and setting formatting attributes across different ranges of the string.  A `UITextView` is still based on `NSString` / `NSAttributedString` under the hood, and the Swift-style `String` property in the `NSTextStorage` would be constantly read and converted to `NSString` / `NSAttributedString`.
 
