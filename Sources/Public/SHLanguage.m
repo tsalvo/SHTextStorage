@@ -6,6 +6,7 @@
 //
 
 #import "SHLanguage.h"
+#import "SHRule.h"
 
 @implementation SHLanguage
 
