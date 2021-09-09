@@ -111,7 +111,7 @@
     
     if (self.isLoggingEnabled)
     {
-        NSLog(@"processEditing editedRange = (%lu, %lu) adjustedRange = (%lu %lu) tempStr length = %lu, storage length = %lu", self.editedRange.location, self.editedRange.length, adjustedRangeForProcessing.location, adjustedRangeForProcessing.length, str.length, self.storage.length);
+        NSLog(@"processEditing editedRange = (%lu, %lu) adjustedRange = (%lu %lu) tempStr length = %lu, storage length = %lu self.length = %lu", self.editedRange.location, self.editedRange.length, adjustedRangeForProcessing.location, adjustedRangeForProcessing.length, str.length, self.storage.length, self.length);
     }
     
     [self.language processRulesForTextStorage:self.storage withFont:self.font inRange:adjustedRangeForProcessing];
