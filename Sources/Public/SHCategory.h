@@ -5,6 +5,8 @@
 //  Created by Tom Salvo on 9/8/21.
 //
 
+#import <Foundation/Foundation.h>
+
 #ifndef SHCategory_h
 #define SHCategory_h
 
