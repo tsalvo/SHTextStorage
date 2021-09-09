@@ -18,6 +18,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHColorSet : NSObject
+#if TARGET_OS_IOS
+-(instancetype)initWithColorMap:(NSDictionary<NSNumber *, UIColor *> *)aColorMap;
+#else
+-(instancetype)initWithColorMap:(NSDictionary<NSNumber *, NSColor *> *)aColorMap;
+#endif
 
 #if TARGET_OS_IOS
 -(UIColor*)colorForCategory:(SHCategory)aCategory;
