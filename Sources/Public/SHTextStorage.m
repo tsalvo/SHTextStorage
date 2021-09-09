@@ -12,13 +12,7 @@
 
 @interface SHTextStorage()
 
-@property (nonatomic, strong) SHStyledLanguage *language;
-@property (nonatomic, strong) NSTextStorage *storage;
-#if TARGET_OS_IOS
-@property (nonatomic, strong) UIFont *font;
-#else
-@property (nonatomic, strong) NSFont *font;
-#endif
+
 
 @end
 
@@ -36,8 +30,10 @@
                             font:(NSFont *)aFont
 #endif
 {
-    if (self = [super init]) {
-        self.language = [[SHStyledLanguage alloc] initWithRules:aLanguage.rules colorSet:aColorSet];
+    if (self = [super init])
+    {
+        self.language = [[SHStyledLanguage alloc] initWithRules:aLanguage.rules
+                                                       colorSet:aColorSet];
         self.storage = [[NSTextStorage alloc] init];
         self.font = aFont;
     }
