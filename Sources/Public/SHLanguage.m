@@ -6,7 +6,6 @@
 //
 
 #import "SHLanguage.h"
-#import "SHColorSet.h"
 
 @implementation SHLanguage
 

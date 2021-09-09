@@ -5,9 +5,11 @@
 //  Created by Tom Salvo on 9/8/21.
 //
 
+#import "SHLanguage.h"
 #import "SHStyledLanguage.h"
 #import "SHCategory.h"
 #import "SHStyledRule.h"
+#import "SHColorSet.h"
 
 @interface SHStyledLanguage()
 @property (nonatomic, strong) NSArray<SHStyledRule *> *styledRules;

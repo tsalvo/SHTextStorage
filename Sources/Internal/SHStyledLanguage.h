@@ -13,11 +13,8 @@
 #import <AppKit/AppKit.h>
 #endif
 
-#import "SHLanguage.h"
-#import "SHColorSet.h"
-
 NS_ASSUME_NONNULL_BEGIN
-
+@class SHLanguage, SHColorSet;
 @interface SHStyledLanguage : NSObject
 
 -(instancetype)initWithLanguage:(SHLanguage *)aLanguage
