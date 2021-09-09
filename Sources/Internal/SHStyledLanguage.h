@@ -14,10 +14,10 @@
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
-@class SHLanguage, SHColorSet;
+@class SHLanguage, SHColorSet, SHRule;
 @interface SHStyledLanguage : NSObject
 
--(instancetype)initWithLanguage:(SHLanguage *)aLanguage
+-(instancetype)initWithRules:(NSArray<SHRule *>*)aRules
                        colorSet:(SHColorSet *)aColorSet;
 
 -(void)processRulesForTextStorage:(NSTextStorage *)aTextSorage
