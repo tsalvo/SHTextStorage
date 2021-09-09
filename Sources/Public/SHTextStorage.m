@@ -23,6 +23,10 @@
 
 @implementation SHTextStorage
 
+@synthesize language;
+@synthesize storage;
+@synthesize font;
+
 - (instancetype)initWithLanguage:(SHLanguage *)aLanguage
                         colorSet:(SHColorSet *)aColorSet
 #if TARGET_OS_IOS

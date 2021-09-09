@@ -17,6 +17,8 @@
 
 @implementation SHColorSet
 
+@synthesize colorMap;
+
 #if TARGET_OS_IOS
 -(instancetype)initWithColorMap:(NSDictionary<NSNumber *, UIColor *> *)aColorMap
 #else

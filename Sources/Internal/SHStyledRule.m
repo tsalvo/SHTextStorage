@@ -8,6 +8,10 @@
 #import "SHStyledRule.h"
 
 @implementation SHStyledRule
+
+@synthesize rule;
+@synthesize color;
+
 -(instancetype) initWithRule:(SHRule *)aRule
 #if TARGET_OS_IOS
                           color:(UIColor *)aColor

@@ -10,6 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @class SHRule;
 @interface SHLanguage : NSObject
+
 @property (nonatomic, retain) NSString *languageName;
 @property (nonatomic, retain) NSArray<SHRule *> *rules;
 

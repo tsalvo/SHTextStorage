@@ -9,6 +9,9 @@
 
 @implementation SHLanguage
 
+@synthesize languageName;
+@synthesize rules;
+
 -(instancetype)initWithName:(NSString *)aName rules:(NSArray<SHRule *>*)aRules
 {
     if (self = [super init])

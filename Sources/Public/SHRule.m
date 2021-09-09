@@ -8,6 +8,11 @@
 #import "SHRule.h"
 
 @implementation SHRule
+
+@synthesize regexPattern;
+@synthesize regexOptions;
+@synthesize category;
+
 -(instancetype) initWithPattern:(NSString *)aPattern
                         options:(NSRegularExpressionOptions)aOptions
                        category:(SHCategory)aCategory

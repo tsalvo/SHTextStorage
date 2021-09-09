@@ -22,6 +22,9 @@
 
 @implementation SHStyledLanguage
 
+@synthesize styledRules;
+@synthesize defaultColor;
+
 -(instancetype)initWithLanguage:(SHLanguage *)aLanguage
                     colorSet:(SHColorSet *)aColorSet
 {
