@@ -13,7 +13,7 @@
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
-@class SHLanguage, SHColorSet, SHStyledLanguage;
+@class SHLanguage, SHColor, SHStyledLanguage;
 @interface SHTextStorage : NSTextStorage
 
 @property (nonatomic, strong) SHStyledLanguage *language;
@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 #endif
 
 - (instancetype)initWithLanguage:(SHLanguage *)aLanguage
-                        colorSet:(SHColorSet *)aColorSet
+                          colors:(NSArray<SHColor *> *)aColors
 #if TARGET_OS_IOS
                             font:(UIFont *)aFont;
 #else

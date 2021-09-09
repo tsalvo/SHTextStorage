@@ -11,19 +11,19 @@
 #define SHCategory_h
 
 typedef NS_ENUM(NSInteger, SHCategory) {
-    DefaultText = 0,
-    CommentText = 1,
-    Keyword = 2,
-    Directive = 3,
-    Name = 4,
-    Decimal = 5,
-    Hex = 6,
-    Binary = 7,
-    TextLiteral = 8,
-    DecimalLiteral = 9,
-    HexLiteral = 10,
-    BinaryLiteral = 11,
-    ExternalName = 12
+    SHCategoryDefault = 0,
+    SHCategoryComment = 1,
+    SHCategoryKeyword = 2,
+    SHCategoryDirective = 3,
+    SHCategoryName = 4,
+    SHCategoryDecimal = 5,
+    SHCategoryHex = 6,
+    SHCategoryBinary = 7,
+    SHCategoryTextLiteral = 8,
+    SHCategoryDecimalLiteral = 9,
+    SHCategoryHexLiteral = 10,
+    SHCategoryBinaryLiteral = 11,
+    SHCategoryExternalName = 12
 };
 
 #endif /* SHCategory_h */

@@ -7,7 +7,7 @@
 
 #import "SHTextSorage.h"
 #import "SHStyledLanguage.h"
-#import "SHColorSet.h"
+#import "SHColor.h"
 #import "SHLanguage.h"
 
 @interface SHTextStorage()
@@ -23,7 +23,7 @@
 @synthesize font;
 
 - (instancetype)initWithLanguage:(SHLanguage *)aLanguage
-                        colorSet:(SHColorSet *)aColorSet
+                        colors:(NSArray<SHColor *> *)aColors
 #if TARGET_OS_IOS
                             font:(UIFont *)aFont
 #else
@@ -33,7 +33,7 @@
     if (self = [super init])
     {
         self.language = [[SHStyledLanguage alloc] initWithLanguage:aLanguage
-                                                       colorSet:aColorSet];
+                                                            colors:aColors];
         self.storage = [[NSTextStorage alloc] init];
         self.font = aFont;
     }

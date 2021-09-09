@@ -14,11 +14,11 @@
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
-@class SHLanguage, SHColorSet;
+@class SHLanguage, SHColor;
 @interface SHStyledLanguage : NSObject
 
 -(instancetype)initWithLanguage:(SHLanguage *)aLanguage
-                       colorSet:(SHColorSet *)aColorSet;
+                         colors:(NSArray<SHColor *> *)aColors;
 
 -(void)processRulesForTextStorage:(NSTextStorage *)aTextSorage
 #if TARGET_OS_IOS

@@ -10,7 +10,7 @@
 #import "SHCategory.h"
 #import "SHStyledRule.h"
 #import "SHRule.h"
-#import "SHColorSet.h"
+#import "SHColor.h"
 
 @interface SHStyledLanguage()
 @property (nonatomic, strong) NSArray<SHStyledRule *> *styledRules;
@@ -27,10 +27,21 @@
 @synthesize defaultColor;
 
 -(instancetype)initWithLanguage:(SHLanguage *)aLanguage
-                       colorSet:(SHColorSet *)aColorSet
+                         colors:(NSArray<SHColor *> *)aColors
 {
     if (self = [super init])
     {
+#if TARGET_OS_IOS
+        NSMutableDictionary<NSNumber *, UIColor *> *colorMap = [NSMutableDictionary dictionary];
+#else
+        NSMutableDictionary<NSNumber *, NSColor *> *colorMap = [NSMutableDictionary dictionary];
+#endif
+        
+        for (SHColor *shColor in aColors)
+        {
+            colorMap[@(shColor.category)] = shColor.color;
+        }
+        
         NSMutableArray<SHStyledRule *> *tempArray = [[NSMutableArray alloc] init];
         for (SHRule *rule in aLanguage.rules)
         {
@@ -40,12 +51,39 @@
             NSColor *color;
 #endif
             
-            color = [aColorSet colorForCategory: rule.category];
+            color = colorMap[@(rule.category)];
+            
+            if (color == nil)
+            {
+#if TARGET_OS_IOS
+                color = UIColor.labelColor;
+#else
+                color = NSColor.labelColor;
+#endif
+            }
+            
             SHStyledRule *styledRule = [[SHStyledRule alloc] initWithRule:rule color:color];
             [tempArray addObject:styledRule];
         }
         self.styledRules = [NSArray arrayWithArray:[tempArray copy]];
-        self.defaultColor = [aColorSet colorForCategory:DefaultText];
+        
+#if TARGET_OS_IOS
+            UIColor *color;
+#else
+            NSColor *color;
+#endif
+        
+        color = colorMap[@(SHCategoryDefault)];
+        
+        if (color == nil)
+        {
+#if TARGET_OS_IOS
+                color = UIColor.labelColor;
+#else
+                color = NSColor.labelColor;
+#endif
+        }
+        self.defaultColor = color;
     }
     
     return self;
