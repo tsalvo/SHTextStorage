@@ -21,9 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(instancetype) initWithRule:(SHRule *)aRule
 #if TARGET_OS_IOS
-                       color:(UIColor *)aColor;
+                       color:(UIColor *)aColor NS_DESIGNATED_INITIALIZER;
 #else
-                       color:(NSColor *)aColor;
+                       color:(NSColor *)aColor NS_DESIGNATED_INITIALIZER;
 #endif
 
 @property (nonatomic, strong) SHRule *rule;

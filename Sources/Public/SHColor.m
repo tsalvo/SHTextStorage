@@ -24,4 +24,14 @@
     return self;
 }
 
+-(instancetype)init
+{
+    self = [self initWithCategory:SHCategoryDefault
+#if TARGET_OS_IOS
+                            color:UIColor.labelColor];
+#else
+                            color:NSColor.labelColor];
+#endif
+}
+
 @end

@@ -89,6 +89,11 @@
     return self;
 }
 
+-(instancetype)init
+{
+    self = [self initWithLanguage:[[SHLanguage alloc] init] colors:@[]];
+}
+
 -(void)processRulesForTextStorage:(NSTextStorage *)aTextSorage
 #if TARGET_OS_IOS
                          withFont:(UIFont *)aFont

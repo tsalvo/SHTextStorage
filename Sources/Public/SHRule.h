@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SHRule: NSObject
 -(instancetype) initWithPattern:(NSString *)aPattern
                         options:(NSRegularExpressionOptions)aOptions
-                       category:(SHCategory)aCategory;
+                       category:(SHCategory)aCategory NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, strong) NSString *regexPattern;
 @property (nonatomic) NSRegularExpressionOptions regexOptions;

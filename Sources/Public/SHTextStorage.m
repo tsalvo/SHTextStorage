@@ -10,12 +10,6 @@
 #import "SHColor.h"
 #import "SHLanguage.h"
 
-@interface SHTextStorage()
-
-
-
-@end
-
 @implementation SHTextStorage
 
 @synthesize language;
@@ -37,6 +31,19 @@
         self.storage = [[NSTextStorage alloc] init];
         self.font = aFont;
     }
+    return self;
+}
+
+-(instancetype)init
+{
+    self = [self initWithLanguage:[[SHLanguage alloc] init]
+                           colors:@[]
+#if TARGET_OS_IOS
+                             font:[UIFont monospacedSystemFontOfSize:14 weight:UIFontWeightSemibold]];
+#else
+                             font:[NSFont monospacedSystemFontOfSize:14 weight:NSFontWeightSemibold]];
+#endif
+    
     return self;
 }
 

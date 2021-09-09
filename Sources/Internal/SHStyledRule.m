@@ -27,4 +27,15 @@
     
     return self;
 }
+
+-(instancetype)init
+{
+    self = [self initWithRule:[[SHRule alloc] init]
+#if TARGET_OS_IOS
+                        color:UIColor.labelColor];
+#else
+                        color:NSColor.labelColor];
+#endif
+    return self;
+}
 @end

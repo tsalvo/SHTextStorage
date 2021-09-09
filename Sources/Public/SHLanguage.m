@@ -24,4 +24,10 @@
     return self;
 }
 
+-(instancetype)init
+{
+    self = [self initWithName:@"" rules:@[]];
+    return self;
+}
+
 @end

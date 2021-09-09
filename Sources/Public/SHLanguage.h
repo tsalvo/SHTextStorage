@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *languageName;
 @property (nonatomic, strong) NSArray<SHRule *> *rules;
 
--(instancetype)initWithName:(NSString *)aName rules:(NSArray<SHRule *>*)aRules;
+-(instancetype)initWithName:(NSString *)aName rules:(NSArray<SHRule *>*)aRules NS_DESIGNATED_INITIALIZER;
 @end
 
 NS_ASSUME_NONNULL_END

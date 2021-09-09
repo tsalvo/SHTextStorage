@@ -26,9 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) SHCategory category;
 
 #if TARGET_OS_IOS
--(instancetype)initWithCategory:(SHCategory)aCategory color:(UIColor *)aColor;
+-(instancetype)initWithCategory:(SHCategory)aCategory color:(UIColor *)aColor NS_DESIGNATED_INITIALIZER;
 #else
--(instancetype)initWithCategory:(SHCategory)aCategory color:(NSColor *)aColor;
+-(instancetype)initWithCategory:(SHCategory)aCategory color:(NSColor *)aColor NS_DESIGNATED_INITIALIZER;
 #endif
 @end
 

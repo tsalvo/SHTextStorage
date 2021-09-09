@@ -27,9 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithLanguage:(SHLanguage *)aLanguage
                           colors:(NSArray<SHColor *> *)aColors
 #if TARGET_OS_IOS
-                            font:(UIFont *)aFont;
+                            font:(UIFont *)aFont NS_DESIGNATED_INITIALIZER;
 #else
-                            font:(NSFont *)aFont;
+                            font:(NSFont *)aFont NS_DESIGNATED_INITIALIZER;
 #endif
 
 @end

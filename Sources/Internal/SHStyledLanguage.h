@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SHStyledLanguage : NSObject
 
 -(instancetype)initWithLanguage:(SHLanguage *)aLanguage
-                         colors:(NSArray<SHColor *> *)aColors;
+                         colors:(NSArray<SHColor *> *)aColors NS_DESIGNATED_INITIALIZER;
 
 -(void)processRulesForTextStorage:(NSTextStorage *)aTextSorage
 #if TARGET_OS_IOS
