@@ -23,13 +23,23 @@ NS_ASSUME_NONNULL_BEGIN
 #else
 @property (nonatomic, strong) NSFont *font;
 #endif
+@property (nonatomic) BOOL isLoggingEnabled;
+
+- (instancetype)initWithLanguage:(SHLanguage *)aLanguage
+                        colors:(NSArray<SHColor *> *)aColors
+#if TARGET_OS_IOS
+                            font:(UIFont *)aFont
+#else
+                            font:(NSFont *)aFont
+#endif
+                         logging:(BOOL)aLogging NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithLanguage:(SHLanguage *)aLanguage
                           colors:(NSArray<SHColor *> *)aColors
 #if TARGET_OS_IOS
-                            font:(UIFont *)aFont NS_DESIGNATED_INITIALIZER;
+                            font:(UIFont *)aFont;
 #else
-                            font:(NSFont *)aFont NS_DESIGNATED_INITIALIZER;
+                            font:(NSFont *)aFont;
 #endif
 
 @end
