@@ -102,9 +102,13 @@
 -(void)processEditing {
     
     NSString* str = self.storage.string;
-    NSRange adjustedRangeForProcessing = NSRangeFromString(str);
+    NSRange adjustedRangeForProcessing;
     
-    if (self.editedRange.location != 0 || self.editedRange.length != self.length)
+    if (self.editedRange.location == 0 && self.editedRange.length == self.length)
+    {
+        adjustedRangeForProcessing = self.editedRange;
+    }
+    else
     {
         adjustedRangeForProcessing = [str lineRangeForRange: self.editedRange];
     }
