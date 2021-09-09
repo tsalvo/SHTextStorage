@@ -21,6 +21,7 @@ let package = Package(
         .target(
             name: "SHTextStorage",
             path: "Sources",
+            exclude: ["Screenshots"],
             resources: [.copy("LICENSE")],
             publicHeadersPath: "Public",
             cSettings: [
