@@ -1,15 +1,15 @@
 # SHTextStorage
-A Swift Package containing an NSTextStorage subclass, and supporting classes for defining language regex rules / color matching, written in Objective-C.  This package is intended to provide syntax highlighting for a UITextView. As the user types, the currently edited line will be reprocessed with the rule set.
+A Swift Package containing an `NSTextStorage` subclass for syntax highlighting, and supporting classes for defining language regex rules / color matching, written in Objective-C. As the user enters text, all line(s) falling under the edited range will be reprocessed with the rule set.
 
 ![Demo](/Screenshots/demo-asm6.gif)
 
 ## Why Objective-C and not Swift?
-Performance is the main reason. `NSTextStorage`, when subclassed in Swift, exposes a Swift-style `String` property, along with methods for reading and setting formatting attributes across different ranges of the string.  A `UITextView` is still based on `NSString` / `NSAttributedString` under the hood, and the Swift-style `String` property in the `NSTextStorage` would be constantly read and converted to `NSString` / `NSAttributedString`.
+Performance is the main reason. `NSTextStorage`, when subclassed in Swift, exposes a Swift-style `String` property, along with methods for reading and setting formatting attributes across different ranges of the string.  A `UITextView` is still based on `NSString` / `NSAttributedString` under the hood, and the Swift-style `String` property in the `NSTextStorage` would be constantly read and converted to `NSString` / `NSAttributedString`. For small amounts of text, this was still fine, but anything larger was noticeably slower when using a Swift-based `NSTextStorage` subclass.
 
 ## Future plans
-- better support for multi-line rules such as /* */ comment ranges, where more than one line would need to be reprocessed
-- bug fixes
-- clean up interfaces and initializers
+- add more tests
+- clean up interface
+- support some common languages out of the box, either via a separate Swift package that depends on this one, or as built-in languages in this package.
 
 ## Example usage in a UIViewController
 ```
