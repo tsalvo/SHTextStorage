@@ -12,7 +12,7 @@ Performance is the main reason. `NSTextStorage`, when subclassed in Swift, expos
 - support some common languages out of the box, either via a separate Swift package that depends on this one, or as built-in languages in this package.
 
 ## Example usage in a UIViewController
-```objc
+```swift
 import UIKit
 import SHTextStorage
 
