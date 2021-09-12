@@ -19,19 +19,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHStyledRule : NSObject
 
--(instancetype) initWithRule:(SHRule *)aRule
-#if TARGET_OS_IOS
-                       color:(UIColor *)aColor NS_DESIGNATED_INITIALIZER;
-#else
-                       color:(NSColor *)aColor NS_DESIGNATED_INITIALIZER;
-#endif
-
 @property (nonatomic, strong) SHRule *rule;
+@property (nonatomic) BOOL isBackgroundRule;
 #if TARGET_OS_IOS
 @property (nonatomic, strong) UIColor *color;
 #else
 @property (nonatomic, strong) NSColor *color;
 #endif
+
+-(instancetype) initWithRule:(SHRule *)aRule
+#if TARGET_OS_IOS
+                       color:(nullable UIColor *)aColor NS_DESIGNATED_INITIALIZER;
+#else
+                       color:(nullable NSColor *)aColor NS_DESIGNATED_INITIALIZER;
+#endif
+
 
 @end
 

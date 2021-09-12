@@ -6,23 +6,52 @@
 //
 
 #import "SHStyledRule.h"
+#import "SHCategory.h"
 
 @implementation SHStyledRule
 
 @synthesize rule;
 @synthesize color;
+@synthesize isBackgroundRule;
 
 -(instancetype)initWithRule:(SHRule *)aRule
 #if TARGET_OS_IOS
-                          color:(UIColor *)aColor
+                          color:(nullable UIColor *)aColor
 #else
-                          color:(NSColor *)aColor
+                          color:(nullable NSColor *)aColor
 #endif
 {
     if (self = [super init])
     {
+#if TARGET_OS_IOS
+        UIColor *tempColor = aColor;
+#else
+        NSColor *tempColor = aColor;
+#endif
+        
+        BOOL tempIsBackgroundRule = false;
+        switch (aRule.category)
+        {
+            case SHCategoryErrorBackground:
+            case SHCategoryWarningBackground:
+                tempIsBackgroundRule = true;
+                break;
+            default:
+                tempIsBackgroundRule = false;
+        }
+        
+        if (tempColor == nil)
+        {
+#if TARGET_OS_IOS
+            tempColor = tempIsBackgroundRule ? UIColor.clearColor : UIColor.labelColor;
+#else
+            tempColor = tempIsBackgroundRule ? NSColor.clearColor : NSColor.labelColor;
+#endif
+        }
+        
         self.rule = aRule;
-        self.color = aColor;
+        self.color = tempColor;
+        self.isBackgroundRule = tempIsBackgroundRule;
     }
     
     return self;

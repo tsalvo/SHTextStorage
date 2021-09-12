@@ -50,17 +50,7 @@
 #else
             NSColor *color;
 #endif
-            
             color = colorMap[@(rule.category)];
-            
-            if (color == nil)
-            {
-#if TARGET_OS_IOS
-                color = rule.isBackgroundRule ? UIColor.clearColor : UIColor.labelColor;
-#else
-                color = rule.isBackgroundRule ? NSColor.clearColor : NSColor.labelColor;
-#endif
-            }
             
             SHStyledRule *styledRule = [[SHStyledRule alloc] initWithRule:rule color:color];
             [tempArray addObject:styledRule];
@@ -118,7 +108,7 @@
             regularExpressionWithPattern: styledRule.rule.regexPattern
             options: styledRule.rule.regexOptions
             error: &regexError];
-        NSString *attribute = styledRule.rule.isBackgroundRule ? NSBackgroundColorAttributeName : NSForegroundColorAttributeName;
+        NSString *attribute = styledRule.isBackgroundRule ? NSBackgroundColorAttributeName : NSForegroundColorAttributeName;
         [regex enumerateMatchesInString:str options:0 range:aRange usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
             [aTextSorage addAttributes: @{ attribute : styledRule.color } range: result.range];
         }];

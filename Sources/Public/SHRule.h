@@ -19,7 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *regexPattern;
 @property (nonatomic) NSRegularExpressionOptions regexOptions;
 @property (nonatomic) SHCategory category;
-@property (nonatomic) BOOL isBackgroundRule;
 
 @end
 
