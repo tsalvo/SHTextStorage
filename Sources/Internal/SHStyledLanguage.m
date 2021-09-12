@@ -56,9 +56,9 @@
             if (color == nil)
             {
 #if TARGET_OS_IOS
-                color = UIColor.labelColor;
+                color = rule.isBackgroundRule ? UIColor.clearColor : UIColor.labelColor;
 #else
-                color = NSColor.labelColor;
+                color = rule.isBackgroundRule ? NSColor.clearColor : NSColor.labelColor;
 #endif
             }
             
