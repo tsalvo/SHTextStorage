@@ -118,8 +118,9 @@
             regularExpressionWithPattern: styledRule.rule.regexPattern
             options: styledRule.rule.regexOptions
             error: &regexError];
+        NSString *attribute = styledRule.rule.isBackgroundRule ? NSBackgroundColorAttributeName : NSForegroundColorAttributeName;
         [regex enumerateMatchesInString:str options:0 range:aRange usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
-            [aTextSorage addAttributes: @{ NSForegroundColorAttributeName : styledRule.color } range: result.range];
+            [aTextSorage addAttributes: @{ attribute : styledRule.color } range: result.range];
         }];
     }
 }

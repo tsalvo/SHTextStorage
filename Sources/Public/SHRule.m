@@ -12,6 +12,7 @@
 @synthesize regexPattern;
 @synthesize regexOptions;
 @synthesize category;
+@synthesize isBackgroundRule;
 
 -(instancetype)initWithPattern:(NSString *)aPattern
                         options:(NSRegularExpressionOptions)aOptions
@@ -22,6 +23,16 @@
         self.regexOptions = aOptions;
         self.regexPattern = aPattern;
         self.category = aCategory;
+        
+        switch (aCategory)
+        {
+            case SHCategoryErrorBackground:
+            case SHCategoryWarningBackground:
+                self.isBackgroundRule = true;
+                break;
+            default:
+                self.isBackgroundRule = false;
+        }
     }
 
     return self;

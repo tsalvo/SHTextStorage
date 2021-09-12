@@ -23,7 +23,9 @@ typedef NS_ENUM(NSInteger, SHCategory) {
     SHCategoryDecimalLiteral = 9,
     SHCategoryHexLiteral = 10,
     SHCategoryBinaryLiteral = 11,
-    SHCategoryExternalName = 12
+    SHCategoryExternalName = 12,
+    SHCategoryErrorBackground = 13,
+    SHCategoryWarningBackground = 14
 };
 
 #endif /* SHCategory_h */
