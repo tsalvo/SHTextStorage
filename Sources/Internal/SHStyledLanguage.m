@@ -81,7 +81,7 @@
 
 -(instancetype)init
 {
-    self = [self initWithLanguage:[[SHLanguage alloc] init] colors:@[]];
+    return [self initWithLanguage:[[SHLanguage alloc] init] colors:@[]];
 }
 
 -(void)processRulesForTextStorage:(NSTextStorage *)aTextSorage

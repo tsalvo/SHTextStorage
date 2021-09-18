@@ -29,6 +29,6 @@
 
 -(instancetype)init
 {
-    self = [self initWithPattern:@"" options:0 category:SHCategoryDefault];
+    return [self initWithPattern:@"" options:0 category:SHCategoryDefault];
 }
 @end

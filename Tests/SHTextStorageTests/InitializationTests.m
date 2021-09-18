@@ -51,6 +51,7 @@
                                                                     font:[NSFont monospacedSystemFontOfSize:14 weight: NSFontWeightSemibold]];
 #endif
     
+    XCTAssertNotNil(textStorage);
 }
 
 
