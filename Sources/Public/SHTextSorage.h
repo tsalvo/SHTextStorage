@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSFont *font;
 #endif
 @property (nonatomic) BOOL isLoggingEnabled;
+@property (nonatomic) NSUInteger numberOfLines;
 
 - (instancetype)initWithLanguage:(SHLanguage *)aLanguage
                         colors:(NSArray<SHColor *> *)aColors
@@ -32,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 #else
                             font:(NSFont *)aFont
 #endif
+                          string:(NSString *)aString
                          logging:(BOOL)aLogging NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithLanguage:(SHLanguage *)aLanguage
@@ -41,6 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
 #else
                             font:(NSFont *)aFont;
 #endif
+
+- (instancetype)initWithString:(NSString *)aString;
 
 @end
 
