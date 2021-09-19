@@ -62,6 +62,37 @@
 
 - (instancetype)initWithLanguage:(SHLanguage *)aLanguage
                         colors:(NSArray<SHColor *> *)aColors
+#if TARGET_OS_IOS
+                            font:(UIFont *)aFont
+#else
+                            font:(NSFont *)aFont
+#endif
+                         logging:(BOOL)aLogging
+{
+    return [self initWithLanguage:aLanguage
+                           colors:aColors
+                             font:aFont
+                           string:@""
+                          logging:aLogging];
+}
+
+- (instancetype)initWithLanguage:(SHLanguage *)aLanguage
+                          colors:(NSArray<SHColor *> *)aColors
+                         logging:(BOOL)aLogging
+{
+    return [self initWithLanguage:aLanguage
+                           colors:aColors
+#if TARGET_OS_IOS
+                             font:[UIFont monospacedSystemFontOfSize:14 weight:UIFontWeightSemibold]
+#else
+                             font:[NSFont monospacedSystemFontOfSize:14 weight:NSFontWeightSemibold]
+#endif
+                           string:@""
+                          logging:aLogging];
+}
+
+- (instancetype)initWithLanguage:(SHLanguage *)aLanguage
+                        colors:(NSArray<SHColor *> *)aColors
 {
     return [self initWithLanguage:aLanguage
                            colors:aColors
@@ -72,6 +103,21 @@
 #endif
                            string:@""
                           logging:false];
+}
+
+- (instancetype)initWithString:(NSString *)aString
+#if TARGET_OS_IOS
+                          font:(UIFont *)aFont
+#else
+                          font:(NSFont *)aFont
+#endif
+                        logging:(BOOL)aLogging
+{
+    return [self initWithLanguage:[[SHLanguage alloc] init]
+                           colors:@[]
+                             font:aFont
+                           string:aString
+                          logging:aLogging];
 }
 
 - (instancetype)initWithString:(NSString *)aString

@@ -37,6 +37,15 @@ NS_ASSUME_NONNULL_BEGIN
                          logging:(BOOL)aLogging NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithLanguage:(SHLanguage *)aLanguage
+                        colors:(NSArray<SHColor *> *)aColors
+#if TARGET_OS_IOS
+                            font:(UIFont *)aFont
+#else
+                            font:(NSFont *)aFont
+#endif
+                         logging:(BOOL)aLogging;
+
+- (instancetype)initWithLanguage:(SHLanguage *)aLanguage
                           colors:(NSArray<SHColor *> *)aColors
 #if TARGET_OS_IOS
                             font:(UIFont *)aFont;
@@ -46,6 +55,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithLanguage:(SHLanguage *)aLanguage
                           colors:(NSArray<SHColor *> *)aColors;
+
+- (instancetype)initWithLanguage:(SHLanguage *)aLanguage
+                          colors:(NSArray<SHColor *> *)aColors
+                         logging:(BOOL)aLogging;
+
+- (instancetype)initWithString:(NSString *)aString
+#if TARGET_OS_IOS
+                          font:(UIFont *)aFont
+#else
+                          font:(NSFont *)aFont
+#endif
+                        logging:(BOOL)aLogging;
 
 - (instancetype)initWithString:(NSString *)aString
 #if TARGET_OS_IOS
