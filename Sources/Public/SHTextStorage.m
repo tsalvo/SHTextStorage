@@ -60,6 +60,34 @@
                           logging:false];
 }
 
+- (instancetype)initWithLanguage:(SHLanguage *)aLanguage
+                        colors:(NSArray<SHColor *> *)aColors
+{
+    return [self initWithLanguage:aLanguage
+                           colors:aColors
+#if TARGET_OS_IOS
+                             font:[UIFont monospacedSystemFontOfSize:14 weight:UIFontWeightSemibold]
+#else
+                             font:[NSFont monospacedSystemFontOfSize:14 weight:NSFontWeightSemibold]
+#endif
+                           string:@""
+                          logging:false];
+}
+
+- (instancetype)initWithString:(NSString *)aString
+#if TARGET_OS_IOS
+                            font:(UIFont *)aFont
+#else
+                            font:(NSFont *)aFont
+#endif
+{
+    return [self initWithLanguage:[[SHLanguage alloc] init]
+                           colors:@[]
+                             font:aFont
+                           string:aString
+                          logging:false];
+}
+
 - (instancetype)initWithString:(NSString *)aString
 {
     return [self initWithLanguage:[[SHLanguage alloc] init]

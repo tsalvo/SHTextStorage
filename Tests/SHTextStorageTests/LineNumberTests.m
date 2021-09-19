@@ -167,4 +167,28 @@
     XCTAssertEqual(textStorage.numberOfLines, 3);
 }
 
+- (void)testNumberOfLinesAfterPartialStringReplacementOfMultilineStringWithEmptyString {
+    SHTextStorage *textStorage = [[SHTextStorage alloc] initWithString:@"hello\nworld!"];
+    [textStorage replaceCharactersInRange:NSMakeRange(5, 1) withString:@""];
+    XCTAssertEqual(textStorage.numberOfLines, 1);
+}
+
+- (void)testNumberOfLinesAfterPartialStringReplacementOfMultilineStringWithOneLineString {
+    SHTextStorage *textStorage = [[SHTextStorage alloc] initWithString:@"hello\nworld!"];
+    [textStorage replaceCharactersInRange:NSMakeRange(5, 1) withString:@" to the "];
+    XCTAssertEqual(textStorage.numberOfLines, 1);
+}
+
+- (void)testNumberOfLinesAfterPartialStringReplacementOfMultilineStringWithNewLineString {
+    SHTextStorage *textStorage = [[SHTextStorage alloc] initWithString:@"hello\nworld!!"];
+    [textStorage replaceCharactersInRange:NSMakeRange(12, 1) withString:@"\n"];
+    XCTAssertEqual(textStorage.numberOfLines, 3);
+}
+
+- (void)testNumberOfLinesAfterPartialStringReplacementOfMultilineStringWithMultiLineString {
+    SHTextStorage *textStorage = [[SHTextStorage alloc] initWithString:@"hello\nworld!"];
+    [textStorage replaceCharactersInRange:NSMakeRange(5, 1) withString:@"\nto the\n"];
+    XCTAssertEqual(textStorage.numberOfLines, 3);
+}
+
 @end

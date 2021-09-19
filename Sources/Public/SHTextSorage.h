@@ -44,6 +44,16 @@ NS_ASSUME_NONNULL_BEGIN
                             font:(NSFont *)aFont;
 #endif
 
+- (instancetype)initWithLanguage:(SHLanguage *)aLanguage
+                          colors:(NSArray<SHColor *> *)aColors;
+
+- (instancetype)initWithString:(NSString *)aString
+#if TARGET_OS_IOS
+                          font:(UIFont *)aFont;
+#else
+                          font:(NSFont *)aFont;
+#endif
+
 - (instancetype)initWithString:(NSString *)aString;
 
 @end
