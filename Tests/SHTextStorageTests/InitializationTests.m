@@ -45,12 +45,7 @@
 
     SHTextStorage *textStorage = [[SHTextStorage alloc] initWithLanguage:language
                                                                   colors:colors
-#if TARGET_OS_IOS
-                                                                    font:[UIFont monospacedSystemFontOfSize:14 weight: UIFontWeightSemibold]];
-#else
-                                                                    font:[NSFont monospacedSystemFontOfSize:14 weight: NSFontWeightSemibold]];
-#endif
-    
+                                                                fontSize:14];
     XCTAssertNotNil(textStorage);
 }
 
