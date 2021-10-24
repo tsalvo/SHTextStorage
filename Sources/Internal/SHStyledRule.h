@@ -14,6 +14,7 @@
 #endif
 
 #import "SHRule.h"
+#import "SHSharedSystemTypes.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,19 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) SHRule *rule;
 @property (nonatomic) BOOL isBackgroundRule;
-#if TARGET_OS_IOS
-@property (nonatomic, strong) UIColor *color;
-#else
-@property (nonatomic, strong) NSColor *color;
-#endif
+@property (nonatomic, strong) SH_SYSTEM_COLOR_TYPE *color;
 
 -(instancetype) initWithRule:(SHRule *)aRule
-#if TARGET_OS_IOS
-                       color:(nullable UIColor *)aColor NS_DESIGNATED_INITIALIZER;
-#else
-                       color:(nullable NSColor *)aColor NS_DESIGNATED_INITIALIZER;
-#endif
-
+                       color:(nullable SH_SYSTEM_COLOR_TYPE *)aColor NS_DESIGNATED_INITIALIZER;
 
 @end
 

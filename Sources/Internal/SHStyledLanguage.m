@@ -14,11 +14,7 @@
 
 @interface SHStyledLanguage()
 @property (nonatomic, strong) NSArray<SHStyledRule *> *styledRules;
-#if TARGET_OS_IOS
-@property (nonatomic, strong) UIColor *defaultColor;
-#else
-@property (nonatomic, strong) NSColor *defaultColor;
-#endif
+@property (nonatomic, strong) SH_SYSTEM_COLOR_TYPE *defaultColor;
 @end
 
 @implementation SHStyledLanguage
@@ -31,11 +27,7 @@
 {
     if (self = [super init])
     {
-#if TARGET_OS_IOS
-        NSMutableDictionary<NSNumber *, UIColor *> *colorMap = [NSMutableDictionary dictionary];
-#else
-        NSMutableDictionary<NSNumber *, NSColor *> *colorMap = [NSMutableDictionary dictionary];
-#endif
+        NSMutableDictionary<NSNumber *, SH_SYSTEM_COLOR_TYPE *> *colorMap = [NSMutableDictionary dictionary];
         
         for (SHColor *shColor in aColors)
         {
@@ -45,11 +37,7 @@
         NSMutableArray<SHStyledRule *> *tempArray = [[NSMutableArray alloc] init];
         for (SHRule *rule in aLanguage.rules)
         {
-#if TARGET_OS_IOS
-            UIColor *color;
-#else
-            NSColor *color;
-#endif
+            SH_SYSTEM_COLOR_TYPE *color;
             color = colorMap[@(rule.category)];
             
             SHStyledRule *styledRule = [[SHStyledRule alloc] initWithRule:rule color:color];
@@ -57,21 +45,11 @@
         }
         self.styledRules = [NSArray arrayWithArray:[tempArray copy]];
         
-#if TARGET_OS_IOS
-            UIColor *color;
-#else
-            NSColor *color;
-#endif
-        
-        color = colorMap[@(SHCategoryDefault)];
+        SH_SYSTEM_COLOR_TYPE *color = colorMap[@(SHCategoryDefault)];
         
         if (color == nil)
         {
-#if TARGET_OS_IOS
-                color = UIColor.labelColor;
-#else
-                color = NSColor.labelColor;
-#endif
+            color = SH_SYSTEM_COLOR_TYPE.labelColor;
         }
         self.defaultColor = color;
     }
@@ -85,11 +63,7 @@
 }
 
 -(void)processRulesForTextStorage:(NSTextStorage *)aTextSorage
-#if TARGET_OS_IOS
-                         withFont:(UIFont *)aFont
-#else
-                         withFont:(NSFont *)aFont
-#endif
+                         withFont:(SH_SYSTEM_FONT_TYPE *)aFont
                           inRange:(NSRange)aRange
 {
     NSString* str = [aTextSorage string];

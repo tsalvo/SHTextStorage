@@ -15,20 +15,11 @@
 @synthesize isBackgroundRule;
 
 -(instancetype)initWithRule:(SHRule *)aRule
-#if TARGET_OS_IOS
-                          color:(nullable UIColor *)aColor
-#else
-                          color:(nullable NSColor *)aColor
-#endif
+                          color:(nullable SH_SYSTEM_COLOR_TYPE *)aColor
 {
     if (self = [super init])
     {
-#if TARGET_OS_IOS
-        UIColor *tempColor = aColor;
-#else
-        NSColor *tempColor = aColor;
-#endif
-        
+        SH_SYSTEM_COLOR_TYPE *tempColor = aColor;
         BOOL tempIsBackgroundRule = false;
         switch (aRule.category)
         {
@@ -42,11 +33,7 @@
         
         if (tempColor == nil)
         {
-#if TARGET_OS_IOS
-            tempColor = tempIsBackgroundRule ? UIColor.clearColor : UIColor.labelColor;
-#else
-            tempColor = tempIsBackgroundRule ? NSColor.clearColor : NSColor.labelColor;
-#endif
+            tempColor = tempIsBackgroundRule ? SH_SYSTEM_COLOR_TYPE.clearColor : SH_SYSTEM_COLOR_TYPE.labelColor;
         }
         
         self.rule = aRule;
@@ -60,11 +47,7 @@
 -(instancetype)init
 {
     self = [self initWithRule:[[SHRule alloc] init]
-#if TARGET_OS_IOS
-                        color:UIColor.labelColor];
-#else
-                        color:NSColor.labelColor];
-#endif
+                        color:SH_SYSTEM_COLOR_TYPE.labelColor];
     return self;
 }
 @end

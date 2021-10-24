@@ -14,22 +14,14 @@
 #endif
 
 #import "SHCategory.h"
+#import "../Internal/SHSharedSystemTypes.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
 @interface SHColor : NSObject
-#if TARGET_OS_IOS
-@property (nonatomic, strong) UIColor *color;
-#else
-@property (nonatomic, strong) NSColor *color;
-#endif
+@property (nonatomic, strong) SH_SYSTEM_COLOR_TYPE *color;
 @property (nonatomic) SHCategory category;
 
-#if TARGET_OS_IOS
--(instancetype)initWithCategory:(SHCategory)aCategory color:(UIColor *)aColor NS_DESIGNATED_INITIALIZER;
-#else
--(instancetype)initWithCategory:(SHCategory)aCategory color:(NSColor *)aColor NS_DESIGNATED_INITIALIZER;
-#endif
+-(instancetype)initWithCategory:(SHCategory)aCategory color:(SH_SYSTEM_COLOR_TYPE *)aColor NS_DESIGNATED_INITIALIZER;
 @end
 
 NS_ASSUME_NONNULL_END

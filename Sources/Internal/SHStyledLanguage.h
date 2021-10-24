@@ -13,6 +13,8 @@
 #import <AppKit/AppKit.h>
 #endif
 
+#import "SHSharedSystemTypes.h"
+
 NS_ASSUME_NONNULL_BEGIN
 @class SHLanguage, SHColor;
 @interface SHStyledLanguage : NSObject
@@ -21,11 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
                          colors:(NSArray<SHColor *> *)aColors NS_DESIGNATED_INITIALIZER;
 
 -(void)processRulesForTextStorage:(NSTextStorage *)aTextSorage
-#if TARGET_OS_IOS
-                         withFont:(UIFont *)aFont
-#else
-                         withFont:(NSFont *)aFont
-#endif
+                         withFont:(SH_SYSTEM_FONT_TYPE *)aFont
                           inRange:(NSRange)aRange;
 
 @end

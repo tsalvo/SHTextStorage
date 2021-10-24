@@ -9,11 +9,7 @@
 
 @implementation SHColor
 
-#if TARGET_OS_IOS
--(instancetype)initWithCategory:(SHCategory)aCategory color:(UIColor *)aColor
-#else
--(instancetype)initWithCategory:(SHCategory)aCategory color:(NSColor *)aColor
-#endif
+-(instancetype)initWithCategory:(SHCategory)aCategory color:(SH_SYSTEM_COLOR_TYPE *)aColor
 {
     if (self = [super init])
     {
@@ -27,11 +23,7 @@
 -(instancetype)init
 {
     return [self initWithCategory:SHCategoryDefault
-#if TARGET_OS_IOS
-                            color:UIColor.labelColor];
-#else
-                            color:NSColor.labelColor];
-#endif
+                            color:SH_SYSTEM_COLOR_TYPE.labelColor];
 }
 
 @end

@@ -12,11 +12,7 @@
 #import "SHLine.h"
 
 @interface SHTextStorage()
-#if TARGET_OS_IOS
-@property (nonatomic, strong) UIFont *font;
-#else
-@property (nonatomic, strong) NSFont *font;
-#endif
+@property (nonatomic, strong) SH_SYSTEM_FONT_TYPE *font;
 @property (nonatomic, strong) SHStyledLanguage *language;
 @property (nonatomic, strong) NSTextStorage *storage;
 @property (nonatomic) BOOL isLoggingEnabled;
@@ -283,11 +279,7 @@
 }
 
 +(NSArray <SHLine *>*)linesForString:(NSString *)aString
-#if TARGET_OS_IOS
-                            withFont:(UIFont*)aFont
-#else
-                            withFont:(NSFont*)aFont
-#endif
+                            withFont:(SH_SYSTEM_FONT_TYPE *)aFont
                           lineHeight:(double)aLineHeight
                    charactersPerLine:(NSUInteger)aCharactersPerLine {
     if (aString.length == 0) {
@@ -316,11 +308,7 @@
     return lines;
 }
 
-#if TARGET_OS_IOS
-+(NSUInteger)numCharactersPerLineWithFont:(UIFont*)aFont
-#else
-+(NSUInteger)numCharactersPerLineWithFont:(NSFont*)aFont
-#endif
++(NSUInteger)numCharactersPerLineWithFont:(SH_SYSTEM_FONT_TYPE*)aFont
                                   inWidth:(CGFloat)aWidth {
     NSUInteger numCharsPerLine = 0;
     CGFloat measureStrWidth = 0;

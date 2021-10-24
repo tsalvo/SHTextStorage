@@ -10,6 +10,7 @@
 #import "../../Sources/Public/SHTextSorage.h"
 #import "../../Sources/Public/SHCategory.h"
 #import "../../Sources/Public/SHColor.h"
+#import "../../Sources/Internal/SHSharedSystemTypes.h"
 
 @interface InitializationTests : XCTestCase
 
@@ -36,11 +37,7 @@
     ];
     SHLanguage *language = [[SHLanguage alloc] initWithName:@"6502 Asssembly (ASM6)" rules: rules];
     NSArray<SHColor *> *colors = @[
-#if TARGET_OS_IOS
-        [[SHColor alloc] initWithCategory:SHCategoryDefault color:UIColor.labelColor]
-#else
-        [[SHColor alloc] initWithCategory:SHCategoryDefault color:NSColor.labelColor]
-#endif
+        [[SHColor alloc] initWithCategory:SHCategoryDefault color:SH_SYSTEM_COLOR_TYPE.labelColor]
     ];
 
     SHTextStorage *textStorage = [[SHTextStorage alloc] initWithLanguage:language
