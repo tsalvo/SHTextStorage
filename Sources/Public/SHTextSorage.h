@@ -15,6 +15,11 @@
 NS_ASSUME_NONNULL_BEGIN
 @class SHLanguage, SHColor, SHStyledLanguage, SHLine;
 @interface SHTextStorage : NSTextStorage
+#if TARGET_OS_IOS
+@property (nonatomic, strong, readonly) UIFont *font;
+#else
+@property (nonatomic, strong, readonly) NSFont *font;
+#endif
 @property (nonatomic, strong, readonly) NSMutableArray<SHLine *> *lines;
 
 - (instancetype)initWithLanguage:(SHLanguage *)aLanguage
