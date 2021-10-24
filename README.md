@@ -103,7 +103,7 @@ class SHViewController: UIViewController {
         return view
     }()
     
-    // add UiTextView to view hierarchy
+    // add UITextView to view hierarchy
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(self.srcTextView)
