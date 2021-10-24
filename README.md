@@ -17,9 +17,7 @@ import UIKit
 import SHTextStorage
 
 class SHViewController: UIViewController {
-    static private let font: UIFont = UIFont.monospacedSystemFont(
-        ofSize: 14,
-        weight: .semibold)
+    static private let fontSize: CGFloat = 23.0
     
     // Define language regex rules, which will be applied in the order listed
     static private let language = SHLanguage(
@@ -80,7 +78,8 @@ class SHViewController: UIViewController {
     private let textStorage: SHTextStorage = SHTextStorage(
         language: SHViewController.language,
         colors: SHViewController.colors,
-        font: SHViewController.font)
+        fontSize: SHViewController.fontSize,
+        logging: false)
     
     // create UITextView with SHTextStorage
     private lazy var srcTextView: UITextView =
@@ -92,7 +91,7 @@ class SHViewController: UIViewController {
         layoutManager.addTextContainer(textContainer)
         let view = UITextView(frame: .zero, textContainer: textContainer)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = SHViewController.font
+        view.font = self.textStorage.font
         view.backgroundColor = UIColor.systemBackground
         view.autocorrectionType = UITextAutocorrectionType.no
         view.dataDetectorTypes = []
